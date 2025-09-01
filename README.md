@@ -41,7 +41,7 @@ aguas_carlitos/
 ## ⚙️ Instalación y ejecución
 
 ### Clonar el repositorio
-```bash
+bash
 git clone https://github.com/AugustoSalvini/Trabajo-final.git
 cd Trabajo-final
 
@@ -54,8 +54,10 @@ cd web
 npm install
 npm run dev
 # Abrir la URL que indique Vite (ej: http://localhost:5173)
+--- 
 
-Funcionalidades principales
+
+##Funcionalidades principales
 
 Registro de clientes con validaciones (nombre, apellido, DNI/CUIT, dirección, zona).
 
@@ -65,13 +67,13 @@ Formulario validado con React Hook Form y Zod.
 
 Interfaz con diseño moderno: fondo con imagen y overlay, tarjeta translúcida, inputs con resaltado al foco y botón con degradado.
 
-Autores
+##Autores
 Nicolas Bastida
 Mateo Borrero
 Augusto Salvini
 Valentin Torales
 
-Notas
+#Notas
 
 En el backend se debe crear un archivo .env con:
 
