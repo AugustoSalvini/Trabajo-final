@@ -1,0 +1,107 @@
+:root{
+  --brand:#0077b6;
+  --brand-2:#00b4d8;
+  --ink:#0b0f19;
+  --card-bg: rgba(255,255,255,0.92);
+  --radius:12px;
+  --shadow: 0 8px 24px rgba(0,0,0,.18);
+}
+
+*{ box-sizing: border-box; }
+html,body,#root{ height:100%; }
+body{
+  margin:0;
+  color:var(--ink);
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:#f3f6fb;
+}
+
+/* Header / título */
+.app-header{
+  display:flex; align-items:center; justify-content:center;
+  gap:14px; padding:20px 0 8px;
+}
+.app-header img{ width:36px; height:36px; filter: drop-shadow(0 2px 4px rgba(0,0,0,.15)); }
+.app-title{
+  font-family: "Merriweather", serif;
+  font-size: 2.25rem; font-weight:700; letter-spacing:.5px; color:var(--brand);
+}
+
+/* Tarjeta del formulario */
+.card{
+  background: var(--card-bg);
+  backdrop-filter: blur(2px);
+  padding: 32px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 560px;
+  width: 100%;
+}
+.card h2{
+  margin: 0 0 16px 0;
+  text-align:center;
+  font-family: "Merriweather", serif;
+  font-size: 1.25rem;
+}
+
+/* Inputs */
+label{ display:flex; flex-direction:column; gap:6px; font-weight:600; }
+input, select, textarea{
+  padding:12px 14px; font-size:15px;
+  border:1px solid #d7dbe7; border-radius:10px; background:white;
+  outline:none; transition: box-shadow .2s ease, border-color .2s ease;
+}
+input:focus, select:focus, textarea:focus{
+  border-color: var(--brand);
+  box-shadow: 0 0 0 4px rgba(0,119,182,.12);
+}
+
+/* Botones */
+button{
+  border:none; border-radius:12px; padding:12px 18px;
+  font-weight:700; color:white; cursor:pointer;
+  background-image: linear-gradient(135deg, var(--brand), var(--brand-2));
+  box-shadow: 0 6px 14px rgba(0,119,182,.28);
+  transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease;
+}
+button:hover{ transform: translateY(-1px); box-shadow: 0 10px 22px rgba(0,119,182,.32); }
+button:active{ transform: translateY(0); }
+button[disabled]{ opacity:.7; cursor:not-allowed; }
+button + button{ margin-left:12px; }  
+/* Contenedor de página con fondo a pantalla + overlay */
+.page-hero{
+  /* el bg se inyecta desde React con style={{'--bg': `url(...)`}} */
+  background-image: linear-gradient(rgba(6,40,61,.28), rgba(6,40,61,.28)), var(--bg);
+  background-size: cover;
+  background-position: center;
+  min-height: calc(100vh - 92px); /* alto header aprox */
+  display: flex; justify-content: center; align-items: flex-start;
+  padding: 40px 20px;
+}
+
+/* Mensajes de estado */
+.msg{ margin-top:10px; font-weight:600; }
+.msg.ok{ color:#137333; }
+.msg.err{ color:#b00020; }
+
+/* Campo con icono a la izquierda (opcional) */
+.field{ position: relative; }
+.field .field-icon{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:18px; height:18px; opacity:.7; pointer-events:none;
+}
+.field input{ padding-left: 38px; } /* deja lugar al icono */
+/* Contenedor hero ya lo tenés como .page-hero */
+
+/* Mensajes de estado */
+.msg{ margin-top:10px; font-weight:600; }
+.msg.ok{ color:#137333; }
+.msg.err{ color:#b00020; }
+
+/* Campo con icono */
+.field{ position: relative; }
+.field .field-icon{
+  position:absolute; left:12px; top:50%; transform:translateY(-50%);
+  width:18px; height:18px; opacity:.7; pointer-events:none;
+}
+.field input{ padding-left: 38px; }
