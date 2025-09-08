@@ -20,23 +20,41 @@ El objetivo de la primera entrega fue configurar el entorno y dejar preparado el
 ## 📂 Estructura de carpetas
 
 Trabajo-final/
+
 ├─ server/ # Backend (Express)
+
 │ ├─ src/
+
 │ │ └─ server.js
+
 │ ├─ package.json
+
 │ └─ .env
+
 └─ web/ # Frontend (React + Vite)
+
 ├─ src/
+
 │ ├─ App.jsx
+
 │ ├─ index.css
+
 │ ├─ main.jsx
+
 │ ├─ pages/ClienteNuevo.jsx
+
 │ ├─ components/ClienteForm.jsx
+
 │ └─ services/api.js
+
 ├─ public/
+
 │ └─ favicon.ico
+
 ├─ package.json
+
 └─ .env
+
 ```
 
 
