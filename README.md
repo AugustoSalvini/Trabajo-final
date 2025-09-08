@@ -84,9 +84,9 @@ Nicolas Bastida
 Mateo Borrero
 Augusto Salvini
 Valentin Torales
-```
 
-```
+
+
 📌 Notas
 
 En server/.env debe estar configurado:
