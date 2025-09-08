@@ -89,9 +89,9 @@ Diseño base con fondo, tarjeta translúcida, inputs validados y botón estiliza
 - **Augusto Salvini
 
 - **Valentin Torales
+```
 
-
-
+```
 📌 Notas
 
 - **En server/.env debe estar configurado:
