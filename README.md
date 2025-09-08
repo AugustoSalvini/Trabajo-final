@@ -80,17 +80,22 @@ Diseño base con fondo, tarjeta translúcida, inputs validados y botón estiliza
 
 ```
 👥 Autores
-Nicolas Bastida
-Mateo Borrero
-Augusto Salvini
-Valentin Torales
+- **Nicolas Bastida
+  
+- **Mateo Borrero
+  
+- **Augusto Salvini
+
+- **Valentin Torales
 
 
 
 📌 Notas
 
-En server/.env debe estar configurado:
+- **En server/.env debe estar configurado:
+
 PORT=4000
-En web/.env debe estar configurado:
+- **En web/.env debe estar configurado:
+  
 VITE_API_URL=http://localhost:4000/api
 ```
