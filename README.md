@@ -37,9 +37,10 @@ Trabajo-final/
 │ └─ favicon.ico
 ├─ package.json
 └─ .env
+```
 
 
----
+```
 
 ## ⚙️ Instalación y ejecución
 
@@ -60,7 +61,7 @@ npm install
 npm run dev
 # Abrir la URL que indique Vite (ej: http://localhost:5173)
 
----
+```
 
 
 🧩 Funcionalidades actuales
@@ -75,18 +76,21 @@ Variables de entorno separadas (.env en backend y frontend).
 
 Diseño base con fondo, tarjeta translúcida, inputs validados y botón estilizado.
 
+```
 
-
-
+```
 👥 Autores
 Nicolas Bastida
 Mateo Borrero
 Augusto Salvini
 Valentin Torales
+```
 
+```
 📌 Notas
 
 En server/.env debe estar configurado:
 PORT=4000
 En web/.env debe estar configurado:
 VITE_API_URL=http://localhost:4000/api
+```
