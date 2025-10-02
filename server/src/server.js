@@ -4,15 +4,21 @@ import dotenv from "dotenv";
 import morgan from "morgan";
 import { pool, assertDb } from './db/pool.js';
 
+// Importar rutas
+import clientesRoutes from './routes/clientesRoutes.js';
+import zonasRoutes from './routes/zonasRoutes.js';
+
 dotenv.config();
 const app = express();
+
+// Middlewares
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-app.use(cors());
-app.use(express.json());
-app.use(morgan("dev"));
+// Rutas de la API
+app.use('/api/clientes', clientesRoutes);
+app.use('/api/zonas', zonasRoutes);
 
 // Endpoint de prueba
 app.get("/api/health", (_req, res) => {
