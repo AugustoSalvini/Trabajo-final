@@ -3,12 +3,15 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "node src/server.js"
+    "dev": "node src/server.js",
+    "migrate": "node src/db/migrate.js",
+    "migrate:status": "node -e \"import('./src/db/migrate.js').then(m => m.getExecutedMigrations().then(console.log))\""
   },
   "dependencies": {
-    "express": "^4.19.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "morgan": "^1.10.0"
+    "express": "^4.19.2",
+    "morgan": "^1.10.0",
+    "pg": "^8.16.3"
   }
 }
