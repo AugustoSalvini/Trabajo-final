@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import ClienteNuevo from "./pages/ClienteNuevo.jsx";
+import ClienteLista from "./pages/ClienteLista.jsx";
 
 export default function App() {
   return (
@@ -12,13 +13,14 @@ export default function App() {
 
       {/* Si querés dejar el link a "Nuevo cliente", lo centramos */}
       <nav style={{ textAlign: "center", margin: "6px 0 10px" }}>
-        <Link to="/" style={{ color: "#4f5d75", textDecoration: "none", fontWeight: 600 }}>
+        <Link to="/registro" style={{ color: "#4f5d75", textDecoration: "none", fontWeight: 600 }}>
           Nuevo cliente
         </Link>
       </nav>
 
       <Routes>
-        <Route path="/" element={<ClienteNuevo />} />
+        <Route path="/registro" element={<ClienteNuevo />} />
+        <Route path="/clientes" element={<ClienteLista />} />
       </Routes>
     </div>
   );

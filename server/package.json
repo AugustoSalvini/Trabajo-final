@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "node src/server.js",
-    "migrate": "node src/db/migrate.js",
+    "migrate": "node -r dotenv/config src/db/migrate.js",
     "migrate:status": "node -e \"import('./src/db/migrate.js').then(m => m.getExecutedMigrations().then(console.log))\""
   },
   "dependencies": {

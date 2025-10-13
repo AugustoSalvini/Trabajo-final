@@ -17,7 +17,6 @@ async function createMigrationsTable() {
       executed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     );
   `;
-  
   await pool.query(query);
   console.log('✅ Tabla schema_migrations creada o ya existe');
 }
@@ -45,19 +44,11 @@ async function markMigrationAsExecuted(migrationName) {
 async function executeMigration(migrationPath, migrationName) {
   try {
     const sql = fs.readFileSync(migrationPath, 'utf8');
-    
-    // Ejecutar dentro de una transacción
     await pool.query('BEGIN');
-    
-    // Ejecutar el SQL de la migración
     await pool.query(sql);
-    
-    // Marcar como ejecutada
     await markMigrationAsExecuted(migrationName);
-    
     await pool.query('COMMIT');
     console.log(`✅ Migración ejecutada: ${migrationName}`);
-    
   } catch (error) {
     await pool.query('ROLLBACK');
     throw new Error(`Error ejecutando migración ${migrationName}: ${error.message}`);
@@ -70,26 +61,23 @@ async function executeMigration(migrationPath, migrationName) {
 async function runMigrations() {
   try {
     console.log('🚀 Iniciando migraciones...');
-    
-    // Crear tabla de control de migraciones
     await createMigrationsTable();
-    
-    // Obtener migraciones ya ejecutadas
     const executedMigrations = await getExecutedMigrations();
     console.log('📋 Migraciones ya ejecutadas:', executedMigrations);
-    
-    // Leer archivos de migraciones
+
     const migrationsDir = path.join(__dirname, 'migrations');
+    if (!fs.existsSync(migrationsDir)) {
+      throw new Error(`No existe la carpeta de migraciones: ${migrationsDir}`);
+    }
+
     const migrationFiles = fs.readdirSync(migrationsDir)
       .filter(file => file.endsWith('.sql'))
-      .sort(); // Ejecutar en orden alfabético
-    
+      .sort();
+
     console.log('📁 Archivos de migración encontrados:', migrationFiles);
-    
-    // Ejecutar migraciones pendientes
+
     for (const file of migrationFiles) {
       const migrationName = path.basename(file, '.sql');
-      
       if (!executedMigrations.includes(migrationName)) {
         console.log(`⏳ Ejecutando migración: ${migrationName}`);
         const migrationPath = path.join(migrationsDir, file);
@@ -98,20 +86,24 @@ async function runMigrations() {
         console.log(`⏭️  Saltando migración ya ejecutada: ${migrationName}`);
       }
     }
-    
+
     console.log('🎉 ¡Todas las migraciones completadas exitosamente!');
-    
   } catch (error) {
     console.error('❌ Error durante las migraciones:', error.message);
     throw error;
   }
 }
 
-/**
- * Función para ejecutar las migraciones si este archivo se ejecuta directamente
- */
-if (import.meta.url === `file://${process.argv[1]}`) {
-  console.log('🚀 Iniciando proceso de migraciones...');
+// ---------------------------------------------------
+// EJECUCIÓN DIRECTA (detecta bien en Windows y con dotenv)
+// ---------------------------------------------------
+import { fileURLToPath as furl } from 'url';
+
+const __filename2 = furl(import.meta.url);
+const called = process.argv[1] ? path.resolve(process.argv[1]) : '';
+const self = path.resolve(__filename2);
+
+if (called === self) {
   runMigrations()
     .then(() => {
       console.log('✅ Proceso de migraciones finalizado');
