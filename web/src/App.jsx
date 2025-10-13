@@ -2,6 +2,10 @@ import React from "react";
 import { Routes, Route, Link } from "react-router-dom";
 import ClienteNuevo from "./pages/ClienteNuevo.jsx";
 import ClienteLista from "./pages/ClienteLista.jsx";
+import FacturaLista from "./pages/FacturaLista";
+import FacturaNueva from "./pages/FacturaNueva";
+import PagoRegistro from "./pages/PagoRegistro";
+import FacturaDetalle from "./pages/FacturaDetalle";
 
 export default function App() {
   return (
@@ -21,6 +25,10 @@ export default function App() {
       <Routes>
         <Route path="/registro" element={<ClienteNuevo />} />
         <Route path="/clientes" element={<ClienteLista />} />
+        <Route path="/facturas" element={<FacturaLista />} />
+        <Route path="/facturas/nueva" element={<FacturaNueva />} />
+        <Route path="/pagos/nuevo" element={<PagoRegistro />} />
+        <Route path="/facturas/:id" element={<FacturaDetalle />} />
       </Routes>
     </div>
   );
