@@ -7,6 +7,8 @@ import { pool, assertDb } from './db/pool.js';
 // Importar rutas
 import clientesRoutes from './routes/clientesRoutes.js';
 import zonasRoutes from './routes/zonasRoutes.js';
+import facturasRoutes from './routes/facturasRoutes.js';
+import pagosRoutes from './routes/pagosRoutes.js';
 
 dotenv.config();
 const app = express();
@@ -19,6 +21,9 @@ app.use(express.json());
 // Rutas de la API
 app.use('/api/clientes', clientesRoutes);
 app.use('/api/zonas', zonasRoutes);
+app.use('/api/facturas', facturasRoutes);
+app.use('/api/pagos', pagosRoutes);
+
 
 // Endpoint de prueba
 app.get("/api/health", (_req, res) => {
